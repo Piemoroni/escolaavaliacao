@@ -281,41 +281,43 @@ e a exclusão não será realizada.
 # 7. Prints das Telas Principais
 
 ## Tela de Login
-![Tela Login](./docs/login.png)
+![Tela Login](./assets/entrar.png)
 
 ---
 
 ## Tela Principal do Professor
-![Tela Principal](./docs/tela-principal.png)
+![Tela Principal](./assets/principal.png)
 
 ---
 
 ## Modal de Cadastro de Turma
-![Cadastro Turma](./docs/cadastro-turma.png)
+![Cadastro Turma](./assets/cadastrar.png)
 
 ---
 
 ## Tela de Atividades da Turma
-![Tela Atividades](./docs/tela-atividades.png)
+![Tela Atividades](./assets/atividades.png)
 
 ---
 
 ## Modal de Cadastro de Atividade
-![Cadastro Atividade](./docs/cadastro-atividade.png)
+![Cadastro Atividade](./assets/cadastro2.png)
 
 ---
 
 ## Confirmação de Exclusão de Turma
-![Confirmação Exclusão](./docs/confirmacao-exclusao.png)
+![Confirmação Exclusão](./assets/confirmacao.png)
 
 ---
 
 ## Mensagem de Bloqueio de Exclusão de Turma com Atividades
-![Bloqueio Exclusão](./docs/bloqueio-exclusao.png)
+![Bloqueio Exclusão](./assets/nao.png)
 
 ---
 
 # 8. DER
+
+![Bloqueio Exclusão](./assets/DER.png)
 
 
 ## Autora
