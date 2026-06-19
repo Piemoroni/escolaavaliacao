@@ -16,21 +16,18 @@ model Professores {
 }
 
 model Turmas {
-  id   Int    @id @default(autoincrement())
-  nome String
-
+  id          Int    @id @default(autoincrement())
+  nome        String
   professorId Int
 
-  professor Professores @relation(fields: [professorId], references: [id])
-
+  professor  Professores  @relation(fields: [professorId], references: [id])
   atividades Atividades[]
 }
 
 model Atividades {
   id        Int    @id @default(autoincrement())
   descricao String
-
-  turmaId Int
+  turmaId   Int
 
   turma Turmas @relation(fields: [turmaId], references: [id])
 }
