@@ -10,8 +10,6 @@ body {
     min-height: 100vh;
 }
 
-/* LOGIN */
-
 .login {
     width: 350px;
     margin: 100px auto;
@@ -53,8 +51,6 @@ body {
     background: #004999;
 }
 
-/* HEADER */
-
 header {
     background: #0066cc;
     color: white;
@@ -74,8 +70,6 @@ header button {
     cursor: pointer;
 }
 
-/* TOPO */
-
 .topo {
     padding: 20px;
 }
@@ -88,8 +82,6 @@ header button {
     border-radius: 5px;
     cursor: pointer;
 }
-
-/* TABELA */
 
 main {
     padding: 20px;
@@ -118,8 +110,6 @@ tbody tr:hover {
     background: #f0f0f0;
 }
 
-/* BOTÕES */
-
 .btnVisualizar {
     background: #0066cc;
     color: white;
@@ -138,14 +128,10 @@ tbody tr:hover {
     cursor: pointer;
 }
 
-/* MODAL */
-
 .modal {
     position: fixed;
     inset: 0;
-
     background: rgba(0, 0, 0, 0.5);
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,7 +142,6 @@ tbody tr:hover {
     background: white;
     padding: 25px;
     border-radius: 10px;
-
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -188,28 +173,21 @@ tbody tr:hover {
     display: none;
 }
 
-/* RESPONSIVO */
-
 @media (max-width: 768px) {
-
     .login {
         width: 90%;
     }
-
     header {
         flex-direction: column;
         gap: 10px;
     }
-
     table {
         font-size: 14px;
     }
-
     th,
     td {
         padding: 8px;
     }
-
     .modal form {
         width: 90%;
     }

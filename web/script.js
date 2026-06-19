@@ -2,10 +2,7 @@ const url = "http://localhost:3000";
 
 const professor = JSON.parse(localStorage.getItem("professor"));
 
-/* =========================
-   LOGIN
-========================= */
-
+// Login
 const formLogin = document.querySelector("#formLogin");
 
 if (formLogin) {
@@ -17,7 +14,6 @@ if (formLogin) {
         fetch(url + "/professores/listar")
 
             .then(res => res.json())
-
             .then(lista => {
 
                 const professorEncontrado = lista.find(p =>
@@ -30,10 +26,7 @@ if (formLogin) {
                     return;
                 }
 
-                localStorage.setItem(
-                    "professor",
-                    JSON.stringify(professorEncontrado)
-                );
+                localStorage.setItem("professor", JSON.stringify(professorEncontrado));
 
                 window.location.href = "index2.html";
             })
@@ -46,30 +39,23 @@ if (formLogin) {
 
 }
 
-/* =========================
-   TURMAS
-========================= */
-
 const listaTurmas = document.querySelector("#listaTurmas");
 
 if (listaTurmas && professor) {
 
-    document.querySelector("#nomeProfessor").innerHTML =
-        "Professor: " + professor.nome;
+    document.querySelector("#nomeProfessor").innerHTML = "Professor: " + professor.nome;
 
     carregarTurmas();
 }
 
+// Listar as Turmas
 function carregarTurmas() {
 
     fetch(
-        url +
-        "/turmas/listarProfessor/" +
-        professor.id
+        url + "/turmas/listarProfessor/" + professor.id
     )
 
     .then(res => res.json())
-
     .then(data => {
 
         listaTurmas.innerHTML = "";
@@ -82,40 +68,27 @@ function carregarTurmas() {
                     <td>${turma.nome}</td>
 
                     <td>
-
-                        <button
-                            class="btnVisualizar"
-                            onclick="visualizarTurma(${turma.id})">
-                            Visualizar
-                        </button>
-
-                        <button
-                            class="btnExcluir"
-                            onclick="excluirTurma(${turma.id})">
-                            Excluir
-                        </button>
-
+                        <button class="btnVisualizar" onclick="visualizarTurma(${turma.id})"> Visualizar </button>
+                        <button class="btnExcluir" onclick="excluirTurma(${turma.id})"> Excluir </button>
                     </td>
                 </tr>
             `;
         });
 
     })
-
     .catch(() => {
         alert("Erro ao carregar turmas");
     });
 }
 
+
 function visualizarTurma(id) {
-
     console.log("Turma clicada:", id);
-
     localStorage.setItem("turmaId", id);
-
     window.location.href = "index3.html";
 }
 
+// Apaga uma Turma
 function excluirTurma(id) {
 
     const confirmar = confirm(
@@ -129,7 +102,6 @@ function excluirTurma(id) {
     })
 
     .then(res => res.json())
-
     .then(data => {
 
         if (data.erro) {
@@ -138,7 +110,6 @@ function excluirTurma(id) {
         }
 
         alert(data.mensagem);
-
         carregarTurmas();
     })
 
@@ -159,6 +130,7 @@ function fecharModalTurma() {
         .classList.add("oculto");
 }
 
+// Formulário de Cadastro das Turmas
 const formTurma = document.querySelector("#formTurma");
 
 if (formTurma && professor) {
@@ -181,15 +153,11 @@ if (formTurma && professor) {
         })
 
         .then(res => res.json())
-
         .then(() => {
 
             alert("Turma cadastrada");
-
             formTurma.reset();
-
             fecharModalTurma();
-
             carregarTurmas();
         })
 
@@ -199,49 +167,39 @@ if (formTurma && professor) {
     });
 }
 
-/* =========================
-   ATIVIDADES
-========================= */
-
 const listaAtividades = document.querySelector("#listaAtividades");
 
 const turmaId = localStorage.getItem("turmaId");
 
 if (listaAtividades && professor) {
 
-    document.querySelector("#nomeProfessor").innerHTML =
-        "Professor: " + professor.nome;
+    document.querySelector("#nomeProfessor").innerHTML ="Professor: " + professor.nome;
 
     carregarNomeTurma();
-
     carregarAtividades();
 }
 
+// Busca o Nome da Turma
 function carregarNomeTurma() {
 
     fetch(url + "/turmas/buscar/" + turmaId)
 
         .then(res => res.json())
-
         .then(turma => {
-
-            document.querySelector("#nomeTurma").innerHTML =
-                "Turma: " + turma.nome;
+            document.querySelector("#nomeTurma").innerHTML = "Turma: " + turma.nome;
         })
 
         .catch(() => {
-
-            document.querySelector("#nomeTurma").innerHTML =
-                "Turma não encontrada";
+            document.querySelector("#nomeTurma").innerHTML = "Turma não encontrada";
         });
 }
 
+// Lista Atividades da Turma
 function carregarAtividades() {
 
     fetch(url + "/atividades/listar")
 
         .then(res => res.json())
-
         .then(data => {
 
             listaAtividades.innerHTML = "";
@@ -256,43 +214,30 @@ function carregarAtividades() {
                     <tr>
                         <td>${atividade.id}</td>
                         <td>${atividade.descricao}</td>
-
                         <td>
-                            <button
-                                class="btnExcluir"
-                                onclick="excluirAtividade(${atividade.id})">
-                                Excluir
-                            </button>
+                            <button class="btnExcluir" onclick="excluirAtividade(${atividade.id})"> Excluir </button>
                         </td>
                     </tr>
                 `;
             });
-
         })
-
         .catch(() => {
             alert("Erro ao carregar atividades");
         });
 }
 
 function abrirModalAtividade() {
-
-    document
-        .querySelector("#modalAtividade")
-        .classList.remove("oculto");
+    document.querySelector("#modalAtividade").classList.remove("oculto");
 }
 
 function fecharModalAtividade() {
-
-    document
-        .querySelector("#modalAtividade")
-        .classList.add("oculto");
+    document .querySelector("#modalAtividade").classList.add("oculto");
 }
 
+// Cadastra as Atividades
 const formAtividade = document.querySelector("#formAtividade");
 
 if (formAtividade) {
-
     formAtividade.addEventListener("submit", function (e) {
 
         e.preventDefault();
@@ -311,24 +256,19 @@ if (formAtividade) {
         })
 
         .then(res => res.json())
-
         .then(() => {
-
             alert("Atividade cadastrada");
-
             formAtividade.reset();
-
             fecharModalAtividade();
-
             carregarAtividades();
         })
-
         .catch(() => {
             alert("Erro ao cadastrar atividade");
         });
     });
 }
 
+// Apaga uma Atividade
 function excluirAtividade(id) {
 
     if (!confirm("Deseja excluir esta atividade?"))
@@ -339,29 +279,21 @@ function excluirAtividade(id) {
     })
 
     .then(res => res.json())
-
     .then(() => {
-
         alert("Atividade excluída");
-
         carregarAtividades();
     })
-
     .catch(() => {
-
         alert("Erro ao excluir atividade");
     });
 }
 
+// Volta Para a Tela das Turmas
 function voltarTurmas() {
-
     window.location.href = "index2.html";
 }
 
-/* =========================
-   LOGOUT
-========================= */
-
+// Faz Logout no Sistema
 function sair() {
 
     localStorage.removeItem("professor");

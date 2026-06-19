@@ -16,6 +16,6 @@ router.get("/listar", listar); //Testado
 router.get("/buscar/:id", buscar); //Testado
 router.put("/atualizar/:id", atualizar); //Testado
 router.delete("/excluir/:id", excluir); //Testado
-router.get("/listarProfessor/:professorId", listarPorProfessor);
+router.get("/listarProfessor/:professorId", listarPorProfessor); //Testado
 
 module.exports = router;
