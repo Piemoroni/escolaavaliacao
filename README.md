@@ -317,7 +317,7 @@ e a exclusão não será realizada.
 
 # 8. DER
 
-![Bloqueio Exclusão](./assets/DER.png)
+![DER](./assets/DER.png)
 
 
 ## Autora
