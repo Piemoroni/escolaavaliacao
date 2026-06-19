@@ -13,6 +13,13 @@
 - Node.js v22.x
 - NPM v10.x
 
+### Ambiente de Desenvolvimento
+- Sistema Operacional: Windows 11
+- Editor: Visual Studio Code 1.100+
+- Node.js: v22.x
+- XAMPP: 8.2
+- MySQL: 8.0
+
 ### Linguagens Utilizadas
 
 #### Back-end
